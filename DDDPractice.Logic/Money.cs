@@ -18,6 +18,24 @@ public sealed class Money : ValueObject<Money>
         int twentyDollarCount
     )
     {
+        if (oneCentCount < 0)
+            throw new InvalidOperationException();
+        
+        if (tenCentCount < 0)
+            throw new InvalidOperationException();
+        
+        if (quarterCount < 0)
+            throw new InvalidOperationException();
+        
+        if (oneDollarCount < 0)
+            throw new InvalidOperationException();
+        
+        if (fiveDollarCount < 0)
+            throw new InvalidOperationException();
+        
+        if (twentyDollarCount < 0)
+            throw new InvalidOperationException();
+        
         OneCentCount = oneCentCount;
         TenCentCount = tenCentCount;
         QuarterCount = quarterCount;
@@ -34,7 +52,7 @@ public sealed class Money : ValueObject<Money>
             money1.QuarterCount + money2.QuarterCount,
             money1.OneDollarCount + money2.OneDollarCount,
             money1.FiveDollarCount + money2.FiveDollarCount,
-            money1.TwentyDollarCount + money2.FiveDollarCount
+            money1.TwentyDollarCount + money2.TwentyDollarCount
         );
 
         return sum;
